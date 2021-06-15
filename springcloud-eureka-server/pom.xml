@@ -24,6 +24,7 @@
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
+                <!--   2.3.8版本boot支持cloud Hoxton.SR11 版本，更高的boot需要cloud Hoxton 以上才可 ，详情参考spring.io -->
                 <version>Hoxton.SR11</version>
                 <type>pom</type>
                 <scope>import</scope>
