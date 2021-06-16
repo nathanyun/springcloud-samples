@@ -12,7 +12,7 @@
     <property name="logback.level" value="info" />
     <property name="logback.additivity" value="true" />
     <!--格式化输出：%d表示日期，%t表示线程名，%-5p：级别从左显示5个字符宽度   %m：日志消息，%n是换行符-->
-    <property name="logback.pattern" value="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5p - %m%n" />
+    <property name="logback.pattern" value="%d{yyyy-MM-dd HH:mm:ss:SSS} [%t] %logger{50} - %m%n" />
     <!-- %d [%t] %-5p %c.%M[%L] - %m%n -->
     <!-- %d{yyyy-MM-dd HH:mm:ss} [%thread]  %-5level %logger{50} - %msg%n -->
 
