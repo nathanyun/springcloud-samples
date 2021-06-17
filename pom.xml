@@ -22,6 +22,7 @@
         <module>springcloud-eureka-server</module>
         <module>springcloud-eureka-provider</module>
         <module>springcloud-eureka-consumer</module>
+        <module>springcloud-eureka-server-second</module>
     </modules>
 
     <dependencies>

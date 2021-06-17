@@ -8,25 +8,14 @@
         <version>0.0.1-SNAPSHOT</version>
         <relativePath/>
     </parent>
-    <artifactId>springcloud-eureka-provider</artifactId>
+    <artifactId>springcloud-eureka-server-second</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>springcloud-eureka-provider</name>
 
     <dependencies>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <!-- 服务提供者 -->
-        <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+            <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
             <version>2.2.8.RELEASE</version>
-        </dependency>
-        <!-- 动态刷新的模块jar -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
     </dependencies>
 
@@ -45,18 +34,17 @@
 
     <build>
         <!--  jar或war包名称  -->
-        <finalName>springcloud-eureka-provider</finalName>
+        <finalName>springcloud-eureka-server-second</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
                     <!--   指定主入口   -->
-                    <mainClass>com.example.springcloud.eureka.provider.EurekaProviderApplication</mainClass>
+                    <mainClass>com.example.springcloud.eureka.server.second.EurekaServerApplication</mainClass>
                 </configuration>
             </plugin>
         </plugins>
     </build>
-
 
 </project>
