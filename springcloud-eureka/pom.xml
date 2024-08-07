@@ -13,6 +13,7 @@
 
     <modules>
         <module>springcloud-eureka-server</module>
+        <module>springcloud-eureka-producer</module>
     </modules>
 
 
