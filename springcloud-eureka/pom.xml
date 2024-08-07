@@ -6,13 +6,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.springcloud</groupId>
-    <artifactId>springcloud-samples</artifactId>
+    <artifactId>springcloud-eureka</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <description>Spring Cloud 示例</description>
+    <description>Eureka 示例</description>
 
     <modules>
-        <module>springcloud-eureka</module>
+        <module>springcloud-eureka-server</module>
     </modules>
 
 

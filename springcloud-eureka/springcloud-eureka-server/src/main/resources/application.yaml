@@ -1,0 +1,12 @@
+server:
+  port: 8001
+spring:
+  application:
+    name: eureka-server
+eureka:
+  server:
+    enable-self-preservation: false # 防止由于Eureka的机制导致Client被错误显示在线，仅在开发环境使用，生产环境需缓存此信息，防止因网络波动导致服务频繁上下线
+  client:
+    register-with-eureka: false # 不向注册中心注册自己
+    service-url:
+      defaultZone: http://localhost:8001/eureka/
