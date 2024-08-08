@@ -6,7 +6,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.1.6.RELEASE</version>
+        <version>3.0.13</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
@@ -17,8 +17,11 @@
     <packaging>jar</packaging>
 
     <properties>
-        <!--   spring boot 与 cloud对应版本可参考 spring.io 的说明-->
-        <spring-cloud.version>Greenwich.SR1</spring-cloud.version>
+        <!--   spring boot 与 cloud对应版本可参考 https://spring.io/projects/spring-cloud#overview 的说明
+        Release Train Version: 2022.0.5
+        Supported Boot Version: 3.0.13
+        -->
+        <spring-cloud.version>2022.0.5</spring-cloud.version>
     </properties>
 
     <dependencies>
@@ -39,20 +42,5 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
-    <build>
-        <!--  jar或war包名称
-        <finalName>eureka-server</finalName>-->
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <!--<configuration>
-                    &lt;!&ndash;   指定主入口   &ndash;&gt;
-                    <mainClass>com.springcloud.eureka.EurekaServerApp</mainClass>
-                </configuration>-->
-            </plugin>
-        </plugins>
-    </build>
 
 </project>
