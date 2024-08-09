@@ -1,4 +1,4 @@
-package com.springcloud.eureka.consumer;
+package com.springcloud.openfeign.consumer;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
