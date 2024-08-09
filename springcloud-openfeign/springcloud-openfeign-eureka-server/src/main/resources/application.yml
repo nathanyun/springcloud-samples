@@ -1,0 +1,28 @@
+server:
+  port: 8761
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+  service-url:
+    defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+  server:
+    enable-self-preservation: off
+
+# 暴露健康端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+
+  endpoint:
+    health:
+      # 显示详情
+      show-details: always
+      status:
+        # 映射健康状态到HTTP状态码
+        http-mapping:
+          down: 500
