@@ -1,4 +1,4 @@
-package com.springcloud.producer;
+package com.springcloud.eureka.producer;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -6,6 +6,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+@EnableFeignClients
 // 新版本已经废弃了@EnableEurekaClient, 改用@EnableDiscoveryClient注解
 @EnableDiscoveryClient
 @SpringBootApplication
