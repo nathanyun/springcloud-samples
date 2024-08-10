@@ -2,6 +2,7 @@ package com.springcloud.circuitbreaker;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.client.circuitbreaker.CircuitBreaker;
 import org.springframework.cloud.client.circuitbreaker.CircuitBreakerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,7 +24,10 @@ public class HelloController {
     @GetMapping("/hello/{name}")
     public Map hello(@PathVariable String name) {
         // 使用断路器调用服务, 若服务提供者异常, 可自动检测&自动恢复
-        return circuitBreakerFactory.create("helloabcdefg").run(helloService.helloSupplier(name), t -> {
+
+        CircuitBreaker circuitBreaker = circuitBreakerFactory.create("helloabcdefg");
+
+        return circuitBreaker.run(helloService.helloSupplier(name), t -> {
             log.warn("hello call failed error", t);
             // 若调用失败, 则返回默认值
             // 可通过手动停止服务提供者来测试 fallback
@@ -33,4 +37,5 @@ public class HelloController {
             return fallback;
         });
     }
+
 }
