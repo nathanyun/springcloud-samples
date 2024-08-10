@@ -1,0 +1,8 @@
+# 应用名称
+spring:
+  application:
+    name: circuitbreaker-resilience-app
+
+# 服务端口
+server:
+  port: 8081

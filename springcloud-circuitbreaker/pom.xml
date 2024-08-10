@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.springcloud</groupId>
+    <artifactId>springcloud-circuitbreaker</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <description>
+        Spring Cloud 断路器代码示例
+        
+        1.断路器很好理解, 就像我们家庭电路中的保险丝, 一旦后端服务不可用, 断路器会直接切断请求链, 避免发送大量无效请求影响系统吞吐量,并且断路器有自我检测并恢复的能力。
+        
+        2.Resilience4j是一个轻量级容错框架，设计灵感来源于Netflix 的 Hystrix 框架，为函数式编程所设计。
+
+        3.Resilience4j 提供了一组高阶函数（装饰器），包括断路器，限流器，重试，隔离，可以对任何的函数式接口，lambda表达式，或方法的引用进行增强，并且这些装饰器可以进行叠加。
+        这样做的好处是，你可以根据需要选择特定的装饰器进行组合。
+    </description>
+
+    <modules>
+        <module>springcloud-circuitbreaker-eureka-server</module>
+        <module>springcloud-circuitbreaker-producer</module>
+        <module>springcloud-circuitbreaker-resilience4j</module>
+    </modules>
+
+</project>
