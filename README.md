@@ -19,6 +19,7 @@
 ├── README.md
 ├── springcloud-circuit-breaker // 断路器
 ├── springcloud-eureka // 服务注册发现
+├── springcloud-config // 配置中心
 └── springcloud-openfeign // 声明式的Web服务客户端
 ```
 
@@ -30,7 +31,6 @@
   
   * > 从 spring cloud 2020.0.0（对应 spring boot 2.4.x） 开始，netflix 的几大组件，hystrix（熔断）、ribbon（负载均衡）、zuul（网关）、eureka（注册中心），除了 eureka 外，其他全部不能用了。能确保没问题的最新版本是 spring cloud Hoxton.SR12（对应 spring boot 2.3.12.RELEASE
   
-
 * `springcloud-circuit-breaker` 模块 因为使用到了resilience4j 2.x版本，因此JDK版本必须位17以上。
 
 ## 链接

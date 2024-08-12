@@ -1,0 +1,23 @@
+server:
+  port: 8888
+
+spring:
+  cloud:
+    config:
+      server:
+        # 启动config server
+        enabled: true
+        # 配置Git仓库地址
+        git:
+          uri: https://gitee.com/nathanyun/springcloud-config-repo
+#          username: 如果这个仓库是私有的,则必须有用户名和密码
+#          password: git仓库密码
+          default-label: master
+
+  application:
+    name: config-server
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
