@@ -1,0 +1,33 @@
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    hostname: localhost
+    # 客户端向服务端发送心跳的间隔时间 默认是30秒
+    lease-renewal-interval-in-seconds: 1
+    # 服务端收到最后一次心跳后等待时间上限 默认90秒  将剔除服务
+    lease-expiration-duration-in-seconds: 2
+spring:
+  application:
+    name: gateway-provider01-app
+
+# 服务端口
+server:
+  port: 8081
+
+# 暴露健康端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+  endpoint:
+    health:
+      # 显示详情
+      show-details: always
+      status:
+        # 映射健康状态到HTTP状态码
+        http-mapping:
+          down: 500

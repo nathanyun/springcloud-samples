@@ -1,0 +1,22 @@
+server:
+  port: 8761
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+  service-url:
+    defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+  server:
+    # 自我保护机制：当客户端发生故障后，服务端并不着急删除注册中心的客户端，期待它又会连上去
+    # 开发环境关闭保护模式
+    enable-self-preservation: false
+    eviction-interval-timer-in-ms: 2000
+
+# 暴露健康端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

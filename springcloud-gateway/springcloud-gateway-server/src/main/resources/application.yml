@@ -1,0 +1,45 @@
+spring:
+  application:
+    name: gateway-server-app
+#  cloud:
+#    # 统一网关
+#    gateway:
+#      httpclient:
+#        ssl:
+#          # 使用不安全的信任管理器（不推荐在生产环境中使用)
+#          use-insecure-trust-manager: true
+#      routes:
+#        - id: gateway-provider01-service
+#          uri: http://localhost:8081
+#          # 断言访问p1/**的都路由到 http://localhost:8081 的服务
+#          predicates:
+#            - Path=/p1/**
+#        - id: gateway-provider02-service
+#          uri: http://localhost:8082
+#          # 断言访问p2/**的都路由到 http://localhost:8082 的服务
+#          predicates:
+#            - Path=/p2/**
+
+# eureka
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+# 服务端口
+server:
+  port: 8080
+
+
+# 暴露健康端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+# 日志配置
+logging:
+  level:
+    root: info
+    org.springframework.cloud: debug
