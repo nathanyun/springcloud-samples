@@ -1,24 +1,30 @@
 spring:
   application:
     name: gateway-server-app
-#  cloud:
-#    # 统一网关
-#    gateway:
-#      httpclient:
-#        ssl:
-#          # 使用不安全的信任管理器（不推荐在生产环境中使用)
-#          use-insecure-trust-manager: true
-#      routes:
-#        - id: gateway-provider01-service
-#          uri: http://localhost:8081
-#          # 断言访问p1/**的都路由到 http://localhost:8081 的服务
-#          predicates:
-#            - Path=/p1/**
-#        - id: gateway-provider02-service
-#          uri: http://localhost:8082
-#          # 断言访问p2/**的都路由到 http://localhost:8082 的服务
-#          predicates:
-#            - Path=/p2/**
+  cloud:
+    # 统一网关
+    gateway:
+      discovery:
+        locator:
+          enabled: true # 开启从注册中心创建动态路由的功能, 利用服务名进行路由.
+      httpclient:
+        ssl:
+          # 使用不安全的信任管理器（不推荐在生产环境中使用)
+          use-insecure-trust-manager: true
+      routes:
+        - id: gateway-provider01-service-route-rule
+          # 按照实际IP配置:  uri: http://localhost:8081
+          # 按照服务名负载均衡配置:  格式为：lb://应用注册服务名
+          # 具体为什么是这个格式,详见: org.springframework.cloud.gateway.discovery.DiscoveryLocatorProperties
+          uri: lb://gateway-provider01-app
+          # 断言访问p1/**的都路由到 gateway-provider01-app 这个服务, 如果有多台, 就进行负载均衡方式访问
+          predicates:
+            - Path=/p1/**
+        - id: gateway-provider02-service-route-rule
+          uri: http://localhost:8082
+          # 断言访问p2/**的都路由到 http://localhost:8082 的服务
+          predicates:
+            - Path=/p2/**
 
 # eureka
 eureka:

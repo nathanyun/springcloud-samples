@@ -31,3 +31,9 @@ management:
         # 映射健康状态到HTTP状态码
         http-mapping:
           down: 500
+
+# 日志配置
+logging:
+  level:
+    root: info
+    org.springframework.cloud: debug
