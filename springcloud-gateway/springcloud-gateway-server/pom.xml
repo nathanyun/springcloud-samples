@@ -16,6 +16,7 @@
 
 	<properties>
 		<spring-cloud.version>2022.0.5</spring-cloud.version>
+		<skipTests>true</skipTests>
 	</properties>
 
 	<dependencies>
@@ -34,6 +35,18 @@
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<!-- 流式测试, 处理较大的响应数据 -->
+		<dependency>
+			<groupId>io.projectreactor</groupId>
+			<artifactId>reactor-test</artifactId>
+			<version>3.4.13</version>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 

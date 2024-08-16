@@ -11,7 +11,7 @@ spring:
         ssl:
           # 使用不安全的信任管理器（不推荐在生产环境中使用)
           use-insecure-trust-manager: true
-      routes:
+      routes: # 一个请求满足多个路由的谓词条件时，请求只会被首个成功匹配的路由转发
         - id: gateway-provider01-service-route-rule
           # 按照实际IP配置:  uri: http://localhost:8081
           # 按照服务名负载均衡配置:  格式为：lb://应用注册服务名
@@ -25,6 +25,55 @@ spring:
           # 断言访问p2/**的都路由到 http://localhost:8082 的服务
           predicates:
             - Path=/p2/**
+            # 断言在当前时间之后才可以访问
+            - After=2024-09-14T18:20:46.662+08:00[Asia/Shanghai]
+        - id: gateway-provider02-service-route-cookie
+          uri: http://localhost:8082
+          # 断言cookie的sessionId值为test时, 路由到 http://localhost:8082 的服务
+          predicates:
+            - Cookie=sessionId, test
+        - id: gateway-provider02-service-route-header
+          uri: http://localhost:8082
+          predicates:
+            # 通过 Header 断言, 语法: key, 正则表达式
+            - Header=X-Request-Id, \d+
+        # 通过 host 断言, 如果访问的Host包含baidu.com 路由到 https://tieba.baidu.com
+        - id: tieba-route-host
+          uri: https://tieba.baidu.com
+          predicates:
+            - Host=**.baidu.com
+        # 通过 请求方式 断言
+        - id: tieba-route-method
+          uri: https://tieba.baidu.com
+          predicates:
+            - Method=POST
+        # 通过 请求参数 断言
+        - id: tieba-route-query-kw
+          uri: https://tieba.baidu.com
+          predicates:
+            - Query=kw
+        # 通过 请求参数 断言, 值可以匹配正则
+        - id: tieba-route-query-regx
+          uri: https://tieba.baidu.com
+          predicates:
+            - Query=kw,lol. # 包含key 是 kw, value以lol开头的请求
+        # 通过 请求IP 断言, 网关将匹配192.168.1.100的IP地址的请求，并将请求路由到https://tuijian.hao123.com
+        - id: hao123-route-remoteaddr
+          uri: https://tuijian.hao123.com/ent
+          predicates:
+            - RemoteAddr=192.168.1.100
+        # 多种组合断言, 必须同时满足条件才能匹配到
+        - id: gateway-provider01-route-multi-predicates
+          uri: lb://gateway-provider01-app
+          predicates:
+            - Host=**.com
+            - Path=/test
+            - Method=GET
+            - Header=X-Request-Id, [A-Za-z0-9]+ # 英文和数字
+            - Query=name
+            - Query=foo,bar
+            - Cookie=eid,10086
+            - After=2024-01-18T06:06:06+08:00[Asia/Shanghai]
 
 # eureka
 eureka:

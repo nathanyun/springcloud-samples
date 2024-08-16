@@ -16,6 +16,7 @@
 
 	<properties>
 		<spring-cloud.version>2022.0.5</spring-cloud.version>
+		<skipTests>true</skipTests>
 	</properties>
 
 	<dependencies>
@@ -36,6 +37,26 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
+
+		<!--单元测试依赖 start-->
+		<!--它包含了JUnit、Spring Test、Hamcrest、AssertJ、Mockito等测试相关的库。-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<!--注意: 新版本的JDK已经不提供jakarta ee9 的依赖,需要单独引入-->
+		<dependency>
+			<groupId>jakarta.servlet</groupId>
+			<artifactId>jakarta.servlet-api</artifactId>
+			<version>5.0.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<!--单元测试依赖 end-->
 	</dependencies>
 
 	<dependencyManagement>

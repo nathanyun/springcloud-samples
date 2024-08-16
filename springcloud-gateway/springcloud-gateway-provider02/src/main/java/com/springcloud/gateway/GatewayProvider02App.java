@@ -1,5 +1,6 @@
 package com.springcloud.gateway;
 
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -23,9 +24,18 @@ public class GatewayProvider02App {
 	 * 对外提供一个接口
 	 * @return
 	 */
-	@RequestMapping(value = "p1/hello")
+	@RequestMapping(value = "p2/hello")
 	public String hello(@RequestParam(value = "name") String name){
 		return String.format("Hello, %s ! Power by %s", name, appName);
+	}
+
+	/**
+	 * 对外提供一个接口
+	 * @return
+	 */
+	@RequestMapping(value = "getAppName")
+	public String getAppName(HttpServletRequest request){
+		return String.format("Power by %s, host: %s", appName, request.getHeader("Host"));
 	}
 
 	public static void main(String[] args) {

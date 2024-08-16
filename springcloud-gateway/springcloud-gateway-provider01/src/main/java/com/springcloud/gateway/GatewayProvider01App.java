@@ -34,6 +34,13 @@ public class GatewayProvider01App {
 		return String.format("Hello, %s ! Power by appName: %s, serverPort: %d", name, appName, serverPort);
 	}
 
+
+	@RequestMapping(value = "test")
+	public String multiPredicatesRoute(@RequestParam(value = "name") String name){
+		log.info("test name : {}", name);
+		return String.format("Hello, %s ! Power by appName: %s, serverPort: %d", name, appName, serverPort);
+	}
+
 	public static void main(String[] args) {
 		SpringApplication.run(GatewayProvider01App.class, args);
 	}
