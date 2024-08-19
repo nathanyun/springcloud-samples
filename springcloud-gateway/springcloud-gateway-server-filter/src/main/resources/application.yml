@@ -30,7 +30,33 @@ spring:
                 redis-rate-limiter.requestedTokens: 1 # 请求花费的令牌数量, 默认为1
                 key-resolver: "#{@requestIdKeyResolver}" # 用户key解析器, 这是一个spring EL表达式, 可获取Java代码定义的bean
           predicates:
-            - Method=GET
+            - Method=POST
+        # 重试配置
+        - id: retry_route
+          uri: lb://gateway-provider01-app
+          filters:
+            - name: Retry
+              args:
+                retries: 3
+                statuses: BAD_GATEWAY # 哪些状态下会重试, 具体见: org.springframework.http.HttpStatus
+                methods: GET,POST # 哪些方法会重试
+                backoff:
+                  firstBackoff: 10ms
+                  maxBackoff: 50ms
+                  factor: 2
+                  basedOnPreviousValue: false
+          predicates:
+            - Host=*.retry.com
+        # 断路器配置
+        - id: circuitbreaker_route
+          uri: lb://gateway-provider01-app
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: myCircuitBreaker
+                fallbackUri: forward:/fallback
+          predicates:
+            - Path=/downgrade
 
 # eureka
 eureka:
