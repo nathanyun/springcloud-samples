@@ -16,6 +16,7 @@
         <module>springcloud-gateway-provider01</module>
         <module>springcloud-gateway-provider02</module>
         <module>springcloud-gateway-server</module>
+        <module>springcloud-gateway-server-filter</module>
     </modules>
 
 </project>
