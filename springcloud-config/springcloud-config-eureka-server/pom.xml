@@ -11,7 +11,7 @@
     </parent>
 
     <groupId>com.springcloud</groupId>
-    <artifactId>springcloud-eureka-server</artifactId>
+    <artifactId>springcloud-config-eureka-server</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <description>Eureka服务端</description>
     <packaging>jar</packaging>

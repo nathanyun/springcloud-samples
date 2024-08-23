@@ -11,7 +11,7 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>springcloud-eureka-server</module>
+        <module>springcloud-config-eureka-server</module>
         <module>springcloud-config-server</module>
         <module>springcloud-config-client</module>
     </modules>
