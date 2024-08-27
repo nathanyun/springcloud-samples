@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: nacos-config-application
+  config:
+    import: optional:nacos${spring.application.name}.${spring.cloud.nacos.config.file-extension}
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      config:
+        server-addr: 127.0.0.1:8848
+        group: DEFAULT_GROUP
+        file-extension: yml
