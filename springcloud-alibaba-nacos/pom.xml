@@ -12,6 +12,8 @@
 
     <modules>
         <module>springcloud-alibaba-nacos-config</module>
+        <module>springcloud-alibaba-nacos-discovery-consumer</module>
+        <module>springcloud-alibaba-nacos-discovery-provider</module>
     </modules>
 
 </project>
