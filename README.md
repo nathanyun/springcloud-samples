@@ -17,8 +17,9 @@
 ```text
 .
 ├── README.md
+├── springcloud-alibaba-nacos // 配置中心 & 注册中心
 ├── springcloud-circuit-breaker // 断路器
-├── springcloud-eureka // 服务注册发现
+├── springcloud-eureka // 注册中心
 ├── springcloud-gateway // 统一网关
 ├── springcloud-config // 配置中心
 └── springcloud-openfeign // 声明式的Web服务客户端
