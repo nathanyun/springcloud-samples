@@ -6,6 +6,8 @@
 
 > jdk version : 17 +
 >
+> spring cloud alibaba version : 2022.0.0.0
+> 
 > spring cloud version : 2022.0.5
 >
 > spring boot version : 3.0.13
