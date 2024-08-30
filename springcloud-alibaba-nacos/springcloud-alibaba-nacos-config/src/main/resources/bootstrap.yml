@@ -4,6 +4,8 @@ spring:
   config:
     import: optional:nacos${spring.application.name}.${spring.cloud.nacos.config.file-extension}
   profiles:
+    # 此案例中我们通过 spring.profiles.active=<profilename> 的方式写死在配置文件中
+    # 而真正生产开发中是通过 -Dspring.profiles.active=<profile> 参数指定其配置来达到环境间灵活的切换
     active: dev
   cloud:
     nacos:

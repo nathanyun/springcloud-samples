@@ -31,6 +31,13 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+        <!--负载均衡, 替代 Netflix ribbon 的组件
+         SpringCloud 2020.0.1 版本之后 删除了eureka中的ribbon
+        -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-loadbalancer</artifactId>
+        </dependency>
     </dependencies>
 
     <dependencyManagement>
