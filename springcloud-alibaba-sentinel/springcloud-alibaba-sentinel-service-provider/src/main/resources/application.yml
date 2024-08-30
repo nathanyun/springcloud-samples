@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: sentinel-service-provider
+  cloud:
+    nacos:
+      # nacos 服务发现
+      discovery:
+        server-addr: 127.0.0.1:8848
+server:
+  port: 8081
