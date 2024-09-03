@@ -1,10 +1,66 @@
 spring:
   application:
-    name: service-provider
+    name: sentinel-gateway-app
+
+  # spring cloud 组件
   cloud:
+
+    # nacos 服务发现
     nacos:
-      # nacos 服务发现
       discovery:
         server-addr: 127.0.0.1:8848
+
+    # sentinel 流量治理, Gateway网关集成Sentinel是为了流控、熔断、降级
+    sentinel:
+      eager: true # 在 eager 模式下，Sentinel 会在应用程序启动时立即初始化，包括加载规则、注册观察者等操作。 默认是false, 等待第一个请求到达时才进行初始化
+      transport:
+        dashboard: 127.0.0.1:8080 # sentinel 控制台地址
+      # 限流配置重定向地址
+      filter:
+        enabled: true
+    #      scg:
+#        fallback:
+#          mode: redirect
+#          redirect: https://baidu.com
+
+    # 网关
+    gateway:
+      discovery:
+        locator:
+          enabled: true # 开启从注册中心创建动态路由的功能, 利用服务名进行路由.
+
+      # 路由规则, 一个请求满足多个路由的谓词条件时，请求只会被首个成功匹配的路由转发
+      routes:
+        - id: sentinel-service-route-rule001
+          uri: http://localhost:8081
+          predicates:
+            - Path=/echo/*
+
+        - id: sentinel-service-route-rule002
+          # a.按照实际IP配置:  uri: http://localhost:8081
+          # b.按照服务名负载均衡配置:  格式为：lb://应用注册服务名, lb://sentinel-service-provider 具体为什么是这个格式,详见: org.springframework.cloud.gateway.discovery.DiscoveryLocatorProperties
+          uri: lb://sentinel-service-provider
+          # 多种组合断言, 必须同时满足条件才能匹配到, 如果有多台, 就进行负载均衡方式访问
+          predicates:
+            - Method=GET
+            - Query=name,bonny # 查询参数必须有name且值必须是bonny 才会匹配
+
+
+# 服务端口
 server:
-  port: 8801
+  port: 8888
+
+# 暴露健康端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+# 日志配置
+logging:
+  level:
+    root: info
+    org.springframework.cloud: debug
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{80} - %msg%n"

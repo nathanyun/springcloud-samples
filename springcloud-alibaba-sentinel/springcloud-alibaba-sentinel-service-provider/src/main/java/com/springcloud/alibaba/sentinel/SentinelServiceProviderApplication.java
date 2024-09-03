@@ -22,5 +22,10 @@ public class SentinelServiceProviderApplication {
         public String echo(@PathVariable String string) {
             return "Hello Sentinel Service " + string;
         }
+
+        @GetMapping(value = "/hello")
+        public String hello(@RequestParam("name") String name) {
+            return "Hello " + name;
+        }
     }
 }
