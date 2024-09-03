@@ -11,7 +11,7 @@
     </parent>
 
     <groupId>com.springcloud</groupId>
-    <artifactId>springcloud-alibaba-sentinel-resttemplate-samples</artifactId>
+    <artifactId>springcloud-alibaba-sentinel-samples</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
@@ -41,14 +41,17 @@
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
         </dependency>
-        <!--引入 Transport 模块来与 Sentinel 控制台进行通信 详细文档见: https://sentinelguard.io/zh-cn/docs/dashboard.html -->
-        <dependency>
-            <groupId>com.alibaba.csp</groupId>
-            <artifactId>sentinel-transport-simple-http</artifactId>
-        </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
         </dependency>
     </dependencies>
 

@@ -11,7 +11,7 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>springcloud-alibaba-sentinel-resttemplate-samples</module>
+        <module>springcloud-alibaba-sentinel-samples</module>
         <module>springcloud-alibaba-sentinel-gateway</module>
         <module>springcloud-alibaba-sentinel-service-provider</module>
     </modules>

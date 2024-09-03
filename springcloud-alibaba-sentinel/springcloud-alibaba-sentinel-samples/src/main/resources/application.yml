@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: sentinel-app1
+  cloud:
+    sentinel:
+      transport:
+        dashboard: 127.0.0.1:8080
+      filter:
+        enabled: true # 若设置为 false 则会关闭对所有 controller的 sentinel 保护
+        url-patterns: /**
+    nacos:
+      # nacos 服务发现
+      discovery:
+        server-addr: 127.0.0.1:8848
+server:
+  port: 8802
+
+# 暴露健康端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,beans,metrics
+        exclude: shutdown,env,beans
+logging:
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{80} - %msg%n"
