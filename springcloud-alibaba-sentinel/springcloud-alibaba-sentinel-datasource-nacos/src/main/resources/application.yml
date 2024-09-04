@@ -1,0 +1,61 @@
+spring:
+  application:
+    name: sentinel-datasource-application
+  profiles:
+    active: dev
+  config:
+    import:
+      - nacos:${spring.application.name}-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
+  # spring cloud 组件
+  cloud:
+
+    # nacos
+    nacos:
+      # 服务发现
+      discovery:
+        server-addr: 127.0.0.1:8848
+      # 配置中心
+      config:
+        server-addr: 127.0.0.1:8848
+        file-extension: yaml
+        group: DEFAULT_GROUP
+#        import-check:
+#          enabled: false
+
+    # 服务限流, 熔断
+    sentinel:
+      transport:
+        dashboard: 127.0.0.1:8080
+      filter:
+        enabled: true # 若设置为 false 则会关闭对所有 controller的 sentinel 保护
+        url-patterns: /**
+      eager: true # 启动时立即记录, 非首次访问才记录
+
+      # sentinel 规则持久化
+      datasource:
+        flow-control: # 流控管理（这个名称可以自定义）
+          nacos:
+            server-addr: ${spring.cloud.nacos.config.server-addr}
+            data-id: ${spring.application.name}-flow-rules.json
+            data-type: json
+            rule-type: flow
+        degrade-control: # 熔断管理（这个名称可以自定义）
+          nacos:
+            server-addr: ${spring.cloud.nacos.config.server-addr}
+            data-id: ${spring.application.name}-degrade-rules.json
+            data-type: json
+            rule-type: degrade
+
+
+# app config
+server:
+  port: 9802
+
+
+# 日志配置
+logging:
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{80} - %msg%n"
+  level:
+    root: info
+    web: debug

@@ -20,11 +20,12 @@
 .
 ├── README.md
 ├── springcloud-alibaba-nacos // 配置中心 & 注册中心
-├── springcloud-circuit-breaker // 断路器
+├── springcloud-alibaba-sentinel // 服务治理(降级, 限流)
+├── springcloud-circuit-breaker // 断路器 (断路,限流,重试,隔离)
 ├── springcloud-eureka // 注册中心
-├── springcloud-gateway // 统一网关
+├── springcloud-gateway // 统一网关 (路由,转发)
 ├── springcloud-config // 配置中心
-└── springcloud-openfeign // 声明式的Web服务客户端
+└── springcloud-openfeign // 声明式的Web服务客户端(客户端负载均衡)
 ```
 
 ## 特别说明
@@ -37,8 +38,13 @@
   
 * `springcloud-circuit-breaker` 模块 因为使用到了resilience4j 2.x版本，因此JDK版本必须位17以上。
 
-## 链接
+## 参考链接
+[Spring Cloud ](https://spring.io/projects/spring-cloud)
+
+[Spring Cloud Alibaba](https://sca.aliyun.com/)
 
 [Spring Cloud Resilience4j 文档](https://spring.io/projects/spring-cloud-circuitbreaker)
 
 [Resilience4j中文文档](https://github.com/lmhmhl/Resilience4j-Guides-Chinese/blob/main/getting-start/Introduction.md)
+
+> maven拉取源码: `mvn dependency:resolve -Dclassifier=sources `

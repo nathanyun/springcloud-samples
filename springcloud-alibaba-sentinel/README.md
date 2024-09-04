@@ -16,3 +16,15 @@
      #关闭sentinel对controller的url的保护
      spring.cloud.sentinel.filter.enabled=false
 ```
+
+
+
+
+
+
+
+
+
+
+
+

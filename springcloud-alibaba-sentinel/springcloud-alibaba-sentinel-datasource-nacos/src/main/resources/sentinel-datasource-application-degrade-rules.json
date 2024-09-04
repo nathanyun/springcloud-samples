@@ -1,0 +1,26 @@
+[
+    {
+        "resource": "/echo/{str}",
+        "grade": 0, 
+        "count": 1000, 
+        "slowRatioThreshold": 0.1,
+        "minRequestAmount":  10,
+        "timeWindow": 10,
+        "statIntervalMs": 1000 
+    },{
+        "resource": "/echo/{str}",
+        "grade": 2, 
+        "count": 2, 
+        "minRequestAmount":  2,
+        "timeWindow": 5,
+        "statIntervalMs": 1000 
+    },{
+        "resource": "/hello",
+        "grade": 0, 
+        "count": 50.0, 
+        "slowRatioThreshold": 0.0,
+        "minRequestAmount":  1,
+        "timeWindow": 3,
+        "statIntervalMs": 1000 
+    }
+]	

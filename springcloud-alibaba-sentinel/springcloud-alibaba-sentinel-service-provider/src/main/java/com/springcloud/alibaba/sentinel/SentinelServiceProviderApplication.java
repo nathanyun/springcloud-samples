@@ -5,6 +5,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.concurrent.TimeUnit;
+
 
 @EnableDiscoveryClient // 开启服务发现功能
 @SpringBootApplication
@@ -24,7 +26,12 @@ public class SentinelServiceProviderApplication {
         }
 
         @GetMapping(value = "/hello")
-        public String hello(@RequestParam("name") String name) {
+        public String hello(@RequestParam(value = "name", defaultValue = " World") String name) {
+            try {
+                TimeUnit.MILLISECONDS.sleep(1500);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
             return "Hello " + name;
         }
     }

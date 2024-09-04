@@ -1,0 +1,14 @@
+[
+  {
+    "resource": "/echo/{str}",
+    "limitApp": "default", 
+    "grade": 1,
+    "count": 1, 
+    "clusterMode": false,
+    "controlBehavior": 0,
+    "strategy": 0,
+    "warmUpPeriodSec": 10, 
+    "maxQueueingTimeMs": 500,
+    "refResource": "rrr"
+  }
+]
